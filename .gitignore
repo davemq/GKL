@@ -39,3 +39,6 @@ bin/
 # Test folder
 scripts/gatk
 scripts/test
+
+# Emacs backup files
+*~
