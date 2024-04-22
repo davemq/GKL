@@ -39,7 +39,7 @@ import java.io.File;
  * Provides a native PairHMM implementation accelerated for the Intel Architecture.
  */
 public class PowerPairHmm implements PairHMMNativeBinding {
-    private final static Log logger = LogFactory.getLog(IntelPairHmm.class);
+    private final static Log logger = LogFactory.getLog(PowerPairHmm.class);
     private static final String NATIVE_LIBRARY_NAME = "power_pairhmm";
     private String nativeLibraryName = "power_pairhmm";
     private IntelGKLUtils gklUtils = new IntelGKLUtils();

@@ -28,7 +28,7 @@
 #include <debug.h>
 #include <exception>
 #include <string>
-#include "pairhmm_common.h"
+// #include "pairhmm_common.h"
 
 class JavaException : std::exception {
   public:

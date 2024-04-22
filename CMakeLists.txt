@@ -1,4 +1,3 @@
-project(GKL)
 cmake_minimum_required(VERSION 2.8)
 
 # add jni include path
@@ -7,7 +6,9 @@ find_package(JNI)
 include_directories(${JNI_INCLUDE_DIRS})
 
 # common compiler and linker settings
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -mvsx")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -mcpu=power9 -mtune=power9 -mvsx")
+set(CMAKE_CXX_COMPILER "/opt/at15.0/bin/c++")
+set(CMAKE_C_COMPILER "/opt/at15.0/bin/cc")
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 if(APPLE)
