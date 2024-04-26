@@ -27,7 +27,12 @@
 #include <vector>
 #include <math.h>
 #include <debug.h>
+#ifdef __powerpc64__
+#include <simde/simde-common.h>
+#include <simde/x86/avx.h>
+#else
 #include <avx.h>
+#endif
 #include <assert.h>
 #include "IntelPairHmm.h"
 #include "pairhmm_common.h"
