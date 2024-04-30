@@ -103,7 +103,11 @@
 #define MASK_TYPE uint64_t
 #define MASK_ALL_ONES 0xFFFFFFFFFFFFFFFF
 #define MASK_VEC MaskVec_D512
+#ifdef __powerpc64__
+#define MASK_CONST simde__mmask8
+#else
 #define MASK_CONST __mmask8
+#endif
 
 #define SET_VEC_ZERO(__vec)                     \
     __vec= _mm512_setzero_pd()

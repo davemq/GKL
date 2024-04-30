@@ -21,6 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+#ifdef __powerpc64__
+#include <simde/simde-common.h>
+#include <simde/x86/avx512.h>
+#include <simde/x86/avx.h>
+#endif
+
 #include "avx512_impl.h"
 
 #ifndef __APPLE__
