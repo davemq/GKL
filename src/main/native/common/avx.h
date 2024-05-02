@@ -24,6 +24,7 @@
 #ifndef COMMON_AVX_H
 #define COMMON_AVX_H
 
+#ifndef __powerpc64__
 #if defined(_MSC_VER)
     // SIMD intrinsics for Windows
     #include <intrin.h>
@@ -32,6 +33,7 @@
     #include <x86intrin.h>
     #include <stdint.h>
     #include <cpuid.h>
+#endif
 #endif
 
 // helper function
@@ -69,6 +71,7 @@ int check_xcr0_zmm()
 inline
 bool is_avx_supported()
 {
+#ifndef __powerpc64__
     uint32_t a, b, c, d;
     uint32_t avx_mask = (1 << 27) | (1 << 28);
 
@@ -82,6 +85,7 @@ bool is_avx_supported()
     {
         return false;
     }
+#endif
 
     return true;
 }
@@ -92,6 +96,7 @@ bool is_avx_supported()
 inline
 bool is_avx2_supported()
 {
+#ifndef __powerpc64__
     uint32_t a, b, c, d;
     uint32_t osxsave_mask = (1 << 27); // OSX.
     uint32_t avx2_bmi_mask = (1 << 5) | // AVX2
@@ -117,6 +122,7 @@ bool is_avx2_supported()
     {
         return false;
     }
+#endif
 
     return true;
 }
@@ -128,6 +134,7 @@ inline
 bool is_avx512_supported()
 {
 #ifndef __APPLE__
+#ifndef __powerpc64__
     uint32_t a, b, c, d;
     uint32_t osxsave_mask = (1 << 27); // OSX.
     uint32_t avx512_skx_mask = (1 << 16) | // AVX-512F
@@ -154,6 +161,7 @@ bool is_avx512_supported()
     {
         return false;
     }
+#endif
 
     return true;
 #else

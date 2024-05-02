@@ -94,10 +94,12 @@ JNIEXPORT void JNICALL Java_com_intel_gkl_pairhmm_IntelPairHmm_initNative
 
 
   // enable FTZ
+#if defined(_MM_GET_FLUSH_ZERO_MODE) && defined(_MM_FLUSH_ZERO_ON)
   if (_MM_GET_FLUSH_ZERO_MODE() != _MM_FLUSH_ZERO_ON) {
     DBG("Flush-to-zero (FTZ) is enabled when running PairHMM");
   }
   _MM_SET_FLUSH_ZERO_MODE(_MM_FLUSH_ZERO_ON);
+#endif
 
   // set function pointers
   if(is_avx512_supported())

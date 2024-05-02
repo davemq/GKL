@@ -24,10 +24,12 @@
 #ifndef PAIRHMM_COMMON_H
 #define PAIRHMM_COMMON_H
 
+#ifndef __powerpc64__
 #if defined(_MSC_VER)
   #include <intrin.h> // SIMD intrinsics for Windows
 #else
   #include <x86intrin.h> // SIMD intrinsics for GCC
+#endif
 #endif
 
 #include <assert.h>

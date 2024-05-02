@@ -4,8 +4,13 @@
 if(NOT APPLE)
   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-as-needed")
 endif()
-set_property(SOURCE avx_impl.cc APPEND_STRING PROPERTY COMPILE_FLAGS " -mavx ")
-set_property(SOURCE avx512_impl.cc APPEND_STRING PROPERTY COMPILE_FLAGS " -mavx -mavx2 -mavx512f -mavx512dq -mavx512vl ")
+if (CMAKE_SYSTEM_PROCESSOR STREQUAL "ppc64le")
+  set_property(SOURCE avx_impl.cc APPEND_STRING PROPERTY COMPILE_FLAGS " -mcpu=power9 -mtune=power9 -maltivec -mvsx -DSIMDE_ENABLE_NATIVE_ALIASES ")
+  set_property(SOURCE avx512_impl.cc APPEND_STRING PROPERTY COMPILE_FLAGS " -mcpu=power9 -mtune=power9 -maltivec -mvsx -DSIMDE_ENABLE_NATIVE_ALIASES ")
+else()
+  set_property(SOURCE avx_impl.cc APPEND_STRING PROPERTY COMPILE_FLAGS " -mavx ")
+  set_property(SOURCE avx512_impl.cc APPEND_STRING PROPERTY COMPILE_FLAGS " -mavx -mavx2 -mavx512f -mavx512dq -mavx512vl ")
+endif()
 
 #---------------------------------------------------------------------
 # common includes
