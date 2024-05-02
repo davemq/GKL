@@ -30,9 +30,8 @@
 #ifdef __powerpc64__
 #include <simde/simde-common.h>
 #include <simde/x86/avx.h>
-#else
-#include <avx.h>
 #endif
+#include <avx.h>
 #include <assert.h>
 #include "IntelPairHmm.h"
 #include "pairhmm_common.h"
